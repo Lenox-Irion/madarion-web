@@ -5,28 +5,46 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>madarion.io</title>
   <meta name="description" content="madarion.io">
-  <meta name="theme-color" content="#f1efe9" media="(prefers-color-scheme: light)">
-  <meta name="theme-color" content="#141413" media="(prefers-color-scheme: dark)">
+  <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#0c0c0c" media="(prefers-color-scheme: dark)">
   <link rel="icon" href="/favicon.ico" sizes="32x32">
   <link rel="icon" href="/favicon.svg" type="image/svg+xml">
   <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  <link rel="preload" href="/fonts/ibm-plex-sans-latin-500-normal.woff2" as="font" type="font/woff2" crossorigin>
   <style>
+    @font-face {
+      font-family: "Plex Sans";
+      src: url("/fonts/ibm-plex-sans-latin-400-normal.woff2") format("woff2");
+      font-weight: 400;
+      font-display: swap;
+    }
+    @font-face {
+      font-family: "Plex Sans";
+      src: url("/fonts/ibm-plex-sans-latin-500-normal.woff2") format("woff2");
+      font-weight: 500;
+      font-display: swap;
+    }
+    @font-face {
+      font-family: "Plex Mono";
+      src: url("/fonts/ibm-plex-mono-latin-400-normal.woff2") format("woff2");
+      font-weight: 400;
+      font-display: swap;
+    }
+
     :root {
-      --paper: #f1efe9;
-      --ink: #141413;
-      --muted: #77756e;
-      --rule: #d6d3ca;
-      --mark: #c8401f;
-      --serif: "Iowan Old Style", "Palatino Linotype", Palatino, "Book Antiqua", Georgia, serif;
-      --mono: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+      --bg: #ffffff;
+      --fg: #111111;
+      --muted: #737373;
+      --line: #e8e8e8;
+      --sans: "Plex Sans", system-ui, sans-serif;
+      --mono: "Plex Mono", ui-monospace, Menlo, monospace;
     }
     @media (prefers-color-scheme: dark) {
       :root {
-        --paper: #141413;
-        --ink: #ebe8e0;
-        --muted: #8a877f;
-        --rule: #2c2b28;
-        --mark: #e0603d;
+        --bg: #0c0c0c;
+        --fg: #f2f2f2;
+        --muted: #8c8c8c;
+        --line: #232323;
       }
     }
 
@@ -35,11 +53,9 @@
     html, body { height: 100%; overflow: hidden; }
 
     body {
-      background: var(--paper);
-      color: var(--ink);
-      font-family: var(--mono);
-      font-size: 12px;
-      letter-spacing: 0.02em;
+      background: var(--bg);
+      color: var(--fg);
+      font-family: var(--sans);
       -webkit-font-smoothing: antialiased;
     }
 
@@ -55,52 +71,73 @@
       display: flex;
       justify-content: space-between;
       gap: 16px;
+      font-family: var(--mono);
+      font-size: 12px;
       color: var(--muted);
     }
-
-    header { padding-bottom: 12px; border-bottom: 1px solid var(--rule); }
-    footer { padding-top: 12px; border-top: 1px solid var(--rule); }
 
     main {
       display: flex;
       flex-direction: column;
-      justify-content: flex-end;
-      padding-bottom: clamp(16px, 4vh, 48px);
+      justify-content: center;
     }
 
     h1 {
-      font-family: var(--serif);
-      font-weight: 400;
-      font-size: clamp(56px, 15vw, 240px);
-      line-height: 0.9;
-      letter-spacing: -0.035em;
-      margin-left: -0.04em;
+      font-weight: 500;
+      font-size: clamp(48px, 11vw, 168px);
+      line-height: 1;
+      letter-spacing: -0.045em;
+      margin-left: -0.05em;
     }
 
-    h1 span { color: var(--mark); }
+    dl {
+      display: grid;
+      grid-template-columns: 96px 1fr;
+      row-gap: 10px;
+      margin-top: clamp(24px, 5vh, 56px);
+      padding-top: 16px;
+      border-top: 1px solid var(--line);
+      max-width: 480px;
+      font-size: 15px;
+    }
 
-    .note {
-      margin-top: clamp(16px, 3vh, 32px);
-      max-width: 34ch;
-      font-size: 13px;
-      line-height: 1.6;
+    dt {
+      font-family: var(--mono);
+      font-size: 12px;
+      line-height: 22px;
       color: var(--muted);
     }
+
+    dd { line-height: 22px; }
+
+    a {
+      color: inherit;
+      text-decoration: underline;
+      text-decoration-color: var(--line);
+      text-underline-offset: 4px;
+      transition: text-decoration-color 0.15s;
+    }
+    a:hover { text-decoration-color: currentColor; }
   </style>
 </head>
 <body>
   <div class="page">
     <header>
       <span>madarion.io</span>
-      <span>v0</span>
+      <span>Personal site</span>
     </header>
     <main>
-      <h1>madarion<span>.</span>io</h1>
-      <p class="note">Nothing here yet. The page is held while the rest is written.</p>
+      <h1>madarion.io</h1>
+      <dl>
+        <dt>Status</dt>
+        <dd>In progress</dd>
+        <dt>Contact</dt>
+        <dd><a href="mailto:hello@madarion.io">hello@madarion.io</a></dd>
+      </dl>
     </main>
     <footer>
       <span>&copy; <span id="y">2026</span></span>
-      <span>Personal site</span>
+      <span>v0.1</span>
     </footer>
   </div>
   <script>document.getElementById('y').textContent = new Date().getFullYear();</script>
