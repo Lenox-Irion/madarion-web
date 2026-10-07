@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>madarion.io</title>
+  <meta name="description" content="madarion.io">
+  <meta name="theme-color" content="#f1efe9" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#141413" media="(prefers-color-scheme: dark)">
+  <link rel="icon" href="/favicon.ico" sizes="32x32">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  <style>
+    :root {
+      --paper: #f1efe9;
+      --ink: #141413;
+      --muted: #77756e;
+      --rule: #d6d3ca;
+      --mark: #c8401f;
+      --serif: "Iowan Old Style", "Palatino Linotype", Palatino, "Book Antiqua", Georgia, serif;
+      --mono: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+    }
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --paper: #141413;
+        --ink: #ebe8e0;
+        --muted: #8a877f;
+        --rule: #2c2b28;
+        --mark: #e0603d;
+      }
+    }
+
+    * { box-sizing: border-box; margin: 0; }
+
+    html, body { height: 100%; overflow: hidden; }
+
+    body {
+      background: var(--paper);
+      color: var(--ink);
+      font-family: var(--mono);
+      font-size: 12px;
+      letter-spacing: 0.02em;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .page {
+      height: 100vh;
+      height: 100dvh;
+      display: grid;
+      grid-template-rows: auto 1fr auto;
+      padding: clamp(16px, 3vw, 40px);
+    }
+
+    header, footer {
+      display: flex;
+      justify-content: space-between;
+      gap: 16px;
+      color: var(--muted);
+    }
+
+    header { padding-bottom: 12px; border-bottom: 1px solid var(--rule); }
+    footer { padding-top: 12px; border-top: 1px solid var(--rule); }
+
+    main {
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding-bottom: clamp(16px, 4vh, 48px);
+    }
+
+    h1 {
+      font-family: var(--serif);
+      font-weight: 400;
+      font-size: clamp(56px, 15vw, 240px);
+      line-height: 0.9;
+      letter-spacing: -0.035em;
+      margin-left: -0.04em;
+    }
+
+    h1 span { color: var(--mark); }
+
+    .note {
+      margin-top: clamp(16px, 3vh, 32px);
+      max-width: 34ch;
+      font-size: 13px;
+      line-height: 1.6;
+      color: var(--muted);
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <header>
+      <span>madarion.io</span>
+      <span>v0</span>
+    </header>
+    <main>
+      <h1>madarion<span>.</span>io</h1>
+      <p class="note">Nothing here yet. The page is held while the rest is written.</p>
+    </main>
+    <footer>
+      <span>&copy; <span id="y">2026</span></span>
+      <span>Personal site</span>
+    </footer>
+  </div>
+  <script>document.getElementById('y').textContent = new Date().getFullYear();</script>
+</body>
+</html>
